@@ -9,6 +9,7 @@
 const session = require("express-session")
 const pool = require('./database/')
 const express = require("express")
+const bodyParser = require("body-parser")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const app = express()
@@ -34,13 +35,17 @@ app.use(session({
   name: 'sessionId',
 }))
 
-
 // Express Messages Middleware
 app.use(require('connect-flash')())
 app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) 
+
 
 
 
