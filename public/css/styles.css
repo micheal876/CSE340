@@ -30,27 +30,27 @@ main {
   box-shadow: 0px 0px 3px #333;
 }
 
-.homelink {
-  text-decoration: none;
-  color: black;
-  font-family: var(--title-font);
-  font-size: 30px;
-}
 
-#account {
-  text-decoration: none;
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
-  /* text-transform: uppercase; */
-  font-variant: small-caps;
-}
-
-#title-tools {
+/*--------top of page--------------*/
+#top-header {
   display: flex;
   justify-content: space-between;
-  margin: 25px 10px 25px 10px;
-  align-items: center;
 }
+.siteName a {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.5em;
+  color: #050505;
+}
+
+#tools a{
+  text-decoration: none;
+  color: #1ad1e9;
+  border-radius: 10px;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
 
 nav {
   background-color: #333;
@@ -236,6 +236,57 @@ h3 {
 .details li strong {
   display: inline-block;
   width: 100px;
+}
+
+
+/* ------------------login------------- */
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1a3c59;
+  color: white;
+  padding: 25px 40px;
+  width: 430px;
+  height: auto;
+  margin: 10px auto;
+}
+.data-box input, .data-box textarea, #classificationList {
+  padding: 5px 10px;
+  margin: 5px 0;
+  width: -webkit-fill-available;
+}
+.data-box input:valid, .data-box textarea:valid, #classificationList:valid {
+  border: solid 3px rgb(15, 182, 15);
+}
+.data-box input:invalid, .data-box textarea:invalid, #classificationList:invalid {
+  border: solid 3px rgb(190, 17, 17);
+}
+form span {
+  margin: 10px 0;
+}
+form button {
+  background-color: white;
+  border: none;
+  color: #1a3c59;
+  max-width: 200px;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+form a , button a{
+  color: white;
+}
+button {
+  background-color: #1a3c59;
+  border: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
 }
 
 
