@@ -26,6 +26,19 @@ async function buildRegister(req, res, next) {
   })
 }
 
+/* ****************************************
+*  Deliver management view
+* *************************************** */
+async function buildManagement(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./account/account-management", {
+    title: "You are logged in",
+    nav,
+    errors: null,
+  })
+}
+
+
 
 /* ****************************************
 *  Process Login
@@ -57,26 +70,18 @@ async function logToAccount(req, res) {
 }
 
 
-
 /* ****************************************
 *  Process Registration
 * *************************************** */
 async function registerAccount(req, res) {
   let nav = await utilities.getNav()
   const { account_firstname, account_lastname, account_email, account_password } = req.body
- // console.log(JSON.stringify(req.body))
+  
   // Hash the password before storing
-  let hashedPassword, regResult
+  let hashedPassword
   try {
- 
     // regular password and cost (salt is generated automatically)
     hashedPassword = await bcrypt.hashSync(account_password, 10)
-    regResult = await accountModel.registerAccount(
-      account_firstname,
-      account_lastname,
-      account_email,
-      hashedPassword
-    )
   } catch (error) {
     req.flash("notice", 'Sorry, there was an error processing the registration.')
     res.status(500).render("account/register", {
@@ -84,10 +89,14 @@ async function registerAccount(req, res) {
       nav,
       errors: null,
     })
-    return
   }
 
-  
+  const regResult = await accountModel.registerAccount(
+    account_firstname,
+    account_lastname,
+    account_email,
+    hashedPassword
+  )
 
   if (regResult) {
     req.flash(
@@ -97,13 +106,11 @@ async function registerAccount(req, res) {
     res.status(201).render("account/login", {
       title: "Login",
       nav,
-    });
+    })
   } else {
-    console.log('error message'+regResult)
     req.flash("notice", "Sorry, the registration failed.")
     res.status(501).render("account/register", {
       title: "Registration",
-      errors:[],
       nav,
     })
   }
@@ -111,5 +118,4 @@ async function registerAccount(req, res) {
 
 
 
-
-module.exports = { buildLogin, buildRegister, registerAccount, logToAccount}
+module.exports = { buildLogin, buildRegister, registerAccount, logToAccount, buildManagement }
