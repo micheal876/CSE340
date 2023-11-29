@@ -1,6 +1,10 @@
 const accountModel = require("../models/account-model")
 const utilities = require("../utilities")
 const bcrypt =require('bcryptjs')
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
+
+
 /* ***************************************
 *  Deliver login view
 * *************************************** */
@@ -31,12 +35,13 @@ async function buildRegister(req, res, next) {
 * *************************************** */
 async function buildManagement(req, res, next) {
   let nav = await utilities.getNav()
-  res.render("./account/account-management", {
+  res.render("./account/account_management", {
     title: "You are logged in",
     nav,
     errors: null,
   })
 }
+
 
 
 
@@ -68,7 +73,6 @@ async function logToAccount(req, res) {
       return new Error('Access Forbidden')
   }
 }
-
 
 /* ****************************************
 *  Process Registration

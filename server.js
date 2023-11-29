@@ -1,4 +1,3 @@
-
 /* ******************************************
  * This server.js file is the primary file of the 
  * application. It is used to control the project.
@@ -18,6 +17,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
 const baseController = require("./controllers/baseController")
 const Util = require("./utilities")
+const cookieParser = require("cookie-parser")
 
 
 
@@ -45,11 +45,8 @@ app.use(function(req, res, next){
 // for parsing application/x-www-form-urlencoded
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) 
-
-
-
-
-
+app.use(cookieParser())
+app.use(Util.checkJWTToken)
 
 /* ***********************
  * View Engine and Templates

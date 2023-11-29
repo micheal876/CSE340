@@ -40,14 +40,15 @@ invCont.buildById = async function (req, res, next) {
 
 
 /* ***************************
- *  Build management page
+ *  Build management page view
  * ************************** */
 invCont.buildManagement = async function (req, res, next) {
   let nav = await utilities.getNav()
-
+  const classificationSelect = await utilities.buildClassificationDropdown()
   res.render("./inventory/management", {
     title: "Management",
     nav,
+    classificationSelect,
     errors: null,
   })
 }

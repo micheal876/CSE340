@@ -7,4 +7,14 @@
 
 <!-- Message Block -->
 <%- messages()  %>
-<% if (error != null){locals.messages} %>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+
+<!---to fix Failed to lookup view "./account/account-management" in views directory "C:\Users\OWNER\Desktop\CSE340\views"
+executed query  just change file name until you find where the file is named -->
