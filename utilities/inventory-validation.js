@@ -14,9 +14,9 @@ validate.classificationRules = () => {
         .isLength({ min: 2 })
         .withMessage("Please provide a classification name.") // on error this message is sent.
         .custom(async (classification_name) => {
-            const classificationExists = await inventoryModel.checkExistingClassification(classification_name)
+            const classificationExists = await inventoryModel.checkClassification(classification_name)
             if (classificationExists){
-              throw new Error("Classification exists. Please log in or use different email")
+              throw new Error("Classification exists.")
             }})
       ]
   }
@@ -214,6 +214,52 @@ validate.newInventoryRules = () => {
     //   const classificationExists = await inventoryModel.checkExistingClassification(classification_name)
     //   })
     ]
+}
+
+/* ******************************
+ * Check data and return errors to the edit view
+ * ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  const { 
+    inv_id, 
+    inv_make, 
+    inv_model, 
+    inv_year, 
+    inv_description, 
+    inv_image, 
+    inv_thumbnail, 
+    inv_price, 
+    inv_miles,
+    inv_color, 
+    classification_name 
+  } = req.body
+  const title = `${inv_make} ${inv_model}`
+  console.log(title)
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    const classificationSelect = await utilities.buildClassificationDropdown()
+    res.render("inventory/edit-inventory", {
+      errors,
+      title: "Edit " + title,
+      nav,
+      classificationSelect,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_name,
+      inv_id
+    })
+    return
+  }
+  next()
 }
 
   module.exports = validate

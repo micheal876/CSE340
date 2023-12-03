@@ -16,5 +16,14 @@
 <% } %>
 
 
-<!---to fix Failed to lookup view "./account/account-management" in views directory "C:\Users\OWNER\Desktop\CSE340\views"
-executed query  just change file name until you find where the file is named -->
+
+<!-- Body -->
+<h2>Welcome  <%=locals.accountData.account_firstname %></h2>
+<p>You're logged in!</p>
+
+<% if (locals.accountData.account_type == "Employee"|| locals.accountData.account_type == "Admin")
+{%>
+  <h3>Inventory Management</h3>
+  <p><a href="../inv/">Click here to view Inventory Management</a></p>
+<% } %>
+<p><a href="update-account/<%=locals.accountData.account_id%>">Update account information</a></p>

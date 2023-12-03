@@ -15,16 +15,35 @@ router.get("/add-inventory", utilities.handleErrors(invController.buildAddInvent
 
 
 // Route to process adding a classification to database
-router.post('/process-add-classification', 
-validate.classificationRules(),
-validate.checkClassificationData,
-utilities.handleErrors(invController.addClassification));
+router.post('/add-classification', 
+    validate.classificationRules(),
+    validate.checkClassificationData,
+    utilities.handleErrors(invController.addClassification));
 
 // Route to process adding inventory to database
-router.post('/process-add-inventory',
-validate.inventoryRules(),
-validate.checkInventoryData,
-utilities.handleErrors(invController.addToInventory));
+router.post('/add-inventory',
+    validate.inventoryRules(),
+    validate.checkInventoryData,
+    utilities.handleErrors(invController.addToInventory));
+
+
+// Route to build inventory by classification view for management view
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+
+// Route to build inventory by classification view for management view
+router.get("/edit/:inventory_id", utilities.checkAccountType, utilities.handleErrors(invController.buildEditIventory));
+
+// Route to delete inventory
+router.get("/delete/:inventory_id", utilities.checkAccountType, utilities.handleErrors(invController.buildDeleteInv));
+
+// Route to process delete inventory
+router.post("/delete/", utilities.handleErrors(invController.processDeleteInventory));
+
+// Route to process update inventory
+router.post("/update/", 
+validate.newInventoryRules(),
+validate.checkUpdateData,
+utilities.handleErrors(invController.updateInventory));
 
 
 module.exports = router;

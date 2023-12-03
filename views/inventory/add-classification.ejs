@@ -16,7 +16,7 @@
 <% } %>
 
 <!-- Display form -->
-<form action="/inv/process-add-classification" method="post">
+<form action="/inv/add-classification" method="post">
     <div class="data-box">
         <label for="classification_name">New Classification</label>
         <input type="text" name="classification_name" id="classification_name" pattern="^[A-Za-z]+$" placeholder="e.g. Motorcycle" required value="<%= locals.classification_name %>">
