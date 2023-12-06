@@ -10,7 +10,7 @@ router.get("/detail/:inv_id", utilities.handleErrors (invController.buildById));
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification)); // add classification
 router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory)); // add inventory
 router.get("/",utilities.handleErrors(invController.buildManagement)); 
-router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory)); // add inventory
+
 
 
 

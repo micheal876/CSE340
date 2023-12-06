@@ -19,7 +19,7 @@
 <form id="updateForm" action="/inv/update" method="post">
   <div class="data-box">
       <label for="classificationList">Classification</label>
-      <%- dropDown %>
+      <%- classificationSelect %>
 
       <label for="inv_make">Make</label>
       <input type="text" name="inv_make" id="inv_make" placeholder="e.g Harley-Davidson" required value="<%= locals.inv_make %>">

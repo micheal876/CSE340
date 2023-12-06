@@ -226,12 +226,10 @@ async function processPasswordUpdate(req,res,next) {
  * Deliver Account Logout view (Assignment 5)
  *******************************************/
 async function buildLogoutView(req,res,next) {
-  let nav = await utilities.getNav()
-  res.render("./account/logout", {
-    title: "Logout",
-    nav,
-    errors: null,
-  })
+  res.clearCookie("jwt")
+  res.locals.loggedin = 0
+  res.redirect("/")
+
 }
 
 /* ******************************************

@@ -43,6 +43,14 @@ main {
   color: #050505;
 }
 
+.notice {
+  padding: 10px;
+  background-color: rgb(209, 67, 67);
+  font-weight: 600;
+}
+.notice li {
+  list-style: none;
+}
 #tools a{
   text-decoration: none;
   color: #1ad1e9;
@@ -214,10 +222,14 @@ h3 {
 }
 
 .details {
-  width: 300px;
+  width: 450px;
   border: 3px solid #1ad1e9;
   padding: 10px;
   margin-bottom: 20px; /* Add some margin for spacing */
+}
+
+.details {
+ float: right;
 }
 
 .details h2 {
@@ -289,7 +301,45 @@ button {
   border-radius: 10px;
 }
 
+.data-box input, .data-box textarea, #classificationList {
+  padding: 5px 10px;
+  margin: 5px 0;
+  width: -webkit-fill-available;
+}
+.data-box input:valid, .data-box textarea:valid, #classificationList:valid {
+  border: solid 3px rgb(15, 182, 15);
+}
+.data-box input:invalid, .data-box textarea:invalid, #classificationList:invalid {
+  border: solid 3px rgb(190, 17, 17);
+}
 
+#buttoninv{
+  text-decoration: none;
+  color: #1ad1e9;
+  
+}
+
+#buttoninv{
+  background-color: #1a3c59;
+  border: none;
+  font-size: 1em;
+  margin: 20px;
+  border-radius: 10px ;
+}
+
+#buttonaddclas{
+  text-decoration: none;
+  color: #1ad1e9;
+  
+}
+
+#buttonaddclas{
+  background-color: #1a3c59;
+  border: none;
+  font-size: 1em;
+  margin: 20px;
+  border-radius: 10px ;
+}
 
 @media screen and (max-width: 1000px) {
   /* #hero-img {
@@ -312,8 +362,10 @@ button {
   }
   .details {
     width: 100%; 
-    float: none; /
+    float: none;
+    
 }
+
 
 .details li strong {
     width: auto; 
