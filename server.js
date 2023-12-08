@@ -18,7 +18,7 @@ const accountRoute = require("./routes/accountRoute")
 const baseController = require("./controllers/baseController")
 const Util = require("./utilities")
 const cookieParser = require("cookie-parser")
-
+const reviewsRoute = require("./routes/reviewsRoute");
 
 
 /* ***********************
@@ -69,9 +69,12 @@ app.get("/", function(req,res){
 // Inventory routes
 app.use("/inv", inventoryRoute);// inventory routes
 app.use("/account", Util.handleErrors(accountRoute)) // Account routes
+// Review routes
+app.use("/reviews", reviewsRoute)
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })
+
 
 
 /* ***********************

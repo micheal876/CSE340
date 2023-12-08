@@ -182,9 +182,7 @@ h3 {
   grid-template-columns: 1fr 1fr;
 }
 
-#reviews li {
-  margin: 0 0 20px 0;
-}
+
 
 
 
@@ -341,6 +339,12 @@ button {
   border-radius: 10px ;
 }
 
+#review-link{
+  color: #1ad1e9;
+  margin: 100px;
+}
+
+
 @media screen and (max-width: 1000px) {
   /* #hero-img {
     width: ;
@@ -351,9 +355,7 @@ button {
     grid-template-columns: 1fr;
   }
 
-  #reviews {
-    grid-row: 1/2;
-  }
+
 }
 
 @media screen and (max-width: 800px) {
